@@ -37,7 +37,7 @@ photoChannel.on('connection', function(socket) {
 
   var client = clients[id] = {
     socket : socket,
-    pref : { interval: 0 },
+    pref : { interval: 500 },
     active : true,
     sleepUntil : Date.now()
   };

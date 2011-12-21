@@ -32,10 +32,9 @@ jQuery(function($) {
   var imageListEl = $("#image-list");
   var tweets = {};
 
-  imageListEl.on('mouseover', 'li img', function(e) {
+  imageListEl.on('click', 'li img', function(e) {
     var id = $(this).parent('li').data('tweet-id');
     var tweet = tweets[id];
-    console.log(tweet);
     if (tweet) {
       $('#tweet-text').text(tweet.text);
     }
