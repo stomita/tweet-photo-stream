@@ -1,0 +1,20 @@
+{
+  "author": "Shinichi Tomita <shinichi.tomita@gmail.com>",
+  "name": "tweet-photo-stream",
+  "description": "Receive Photo Stream from Twitter",
+  "version": "0.0.1",
+  "main" : "./lib/tweet-photo-stream",
+  "scripts": {
+    "test": "node test/tweet-photo-stream.test.js"
+  },
+  "engines": {
+    "node": "~0.4.10"
+  },
+  "dependencies": {
+    "async": ">= 0.1.12",
+    "twitter-node": "https://github.com/technoweenie/twitter-node/tarball/master"
+  },
+  "devDependencies": {
+    "vows": ">= 0.5.11"
+  }
+}
