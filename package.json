@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "async": ">= 0.1.12",
+    "express": ">=2.4.3",
+    "socket.io": ">=0.8.7",
     "twitter-node": "https://github.com/technoweenie/twitter-node/tarball/master"
   },
   "devDependencies": {
