@@ -1,0 +1,86 @@
+html, body {
+  margin: 0; 
+  font-size: 12px;
+  width: 100%;
+  height: 100%;
+}
+#control {
+  padding : 5px;
+}
+#filter-text {
+  width: 70px;
+}
+#image-list {
+  margin: 0;
+  padding: 2px 0 0 2px;
+  list-style-type: none;
+}
+#image-list li {
+  float: left;
+  padding: 2px 2px 2px 2px;
+}
+#image-list li img {
+  width: 75px;
+  height: 75px;
+  cursor: pointer;
+  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+}
+#popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+#popup.visible {
+  display: block;
+  -webkit-animation: fadeIn 1s;
+}
+#popup .mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: #000;
+  opacity: 0.5;
+}
+#popup .content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  margin: 0 auto;
+}
+#popup .content img {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+}
+#popup .content .tweet {
+  position: absolute;
+  padding : 10px 5px;
+  width: 100%;
+  z-index: 1;
+  opacity: 0.5;
+  background-color: #000;
+  color: #fff;
+}
+@-webkit-keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@-moz-keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+

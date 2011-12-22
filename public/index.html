@@ -5,53 +5,28 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
-    <style type="text/css">
-body {
-  margin: 0; 
-  font-size: 12px;
-}
-#message {
-  padding: 5px;
-}
-#control {
-  padding : 0 5px;
-}
-#image-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-#tweet-text {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-#image-list li {
-  list-style: none;
-  float: left;
-  padding-top : 5px;
-  padding-left : 5px;
-}
-#image-list li img {
-  width: 75px;
-  height: 75px;
-  cursor: pointer;
-}
-    </style>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
   </head>
   <body>
-    <div id="message"></div>
     <div id="control">
-      <input type="button" class="suspend" id="stream-switch" value="Suspend" />
-      Filter : <input type="text" id="filter-text" value="" />
-      Speed : <select id="speed">
-        <option value="0">Realtime</option>
-        <option value="200">High</option>
-        <option value="500" selected>Medium</option>
-        <option value="2000">Slow</option>
-      </select>
-      <span id="tweet-text"></span>
+      <div id="message"></div>
+      <form id="filter-form">
+        Filter : <input type="text" id="filter-text" value="" />
+        Speed : <select id="speed">
+          <option value="0">Realtime</option>
+          <option value="200">High</option>
+          <option value="500" selected>Medium</option>
+          <option value="2000">Slow</option>
+        </select>
+        <input type="button" class="suspend" id="stream-switch" value="Suspend" />
+      </form>
     </div>
     <ul id="image-list"></ul>
+    <div id="popup">
+      <div class="mask"></div>
+      <div class="content">
+        <div class="tweet"></div>
+      </div>
+    </div>
   </body>
 </html>

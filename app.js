@@ -28,12 +28,13 @@ app.configure('production', function(){
 var io = require('socket.io').listen(app);
 var photoChannel = io.of('/photo');
 
+var idseq = 0;
 var count = 0;
 var clients = {};
 
 photoChannel.on('connection', function(socket) {
-  var id = "_" + count++;
-  photoChannel.emit('message', count + 'viewers.');
+  var id = "_" + idseq++;
+  photoChannel.emit('msg', (++count) + ' viewers.');
 
   var client = clients[id] = {
     socket : socket,
@@ -43,24 +44,23 @@ photoChannel.on('connection', function(socket) {
   };
   socket.on('filter', function(text) {
     client.pref.filter = text && text.toLowerCase();
-    client.socket.emit('message', 'Set stream filter to "'+text+'".');
+    client.socket.emit('msg', 'Set stream filter to "'+text+'".');
   });
   socket.on('interval', function(msec) {
     client.pref.interval = msec;
-    client.socket.emit('message', 'Set stream min interval to '+msec+' msec.');
+    client.socket.emit('msg', 'Set stream min interval to '+msec+' msec.');
   });
   socket.on('suspend', function() {
     client.active = false;
-    client.socket.emit('message', 'Stream suspended');
+    client.socket.emit('msg', 'Stream suspended');
   });
   socket.on('resume', function() {
     client.active = true;
-    client.socket.emit('message', 'Stream resumed');
+    client.socket.emit('msg', 'Stream resumed');
   });
   socket.on('disconnect', function() {
-    count--;
     delete clients[id];
-    photoChannel.emit('message', count + 'viewers.');
+    photoChannel.emit('msg', (--count) + ' viewers.');
   });
 });
 
@@ -79,7 +79,7 @@ photoStream.on('photo', function(photo) {
     if (client && client.active && now >= client.sleepUntil) {
       var filter = client.pref.filter;
       if (!filter || tweetText.indexOf(filter) >= 0) {
-        client.socket.emit('photo', photo);
+        client.socket.volatile.emit('photo', photo);
         client.sleepUntil = now + client.pref.interval;
       }
     }
